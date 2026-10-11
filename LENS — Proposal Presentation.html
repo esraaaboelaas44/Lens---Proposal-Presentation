@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LENS — Proposal Presentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06070b;--tx:#eef1f6;--mu:#97a0b3;--dim:#5d6678;--teal:#22c0b4;--pink:#ee2a7b;--lime:#b5d334;--glass:rgba(16,19,28,.62);--bd:rgba(255,255,255,.10);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:var(--bg);color:var(--tx);font-family:'Space Grotesk',system-ui,sans-serif;overflow:hidden}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.aurora{position:fixed;inset:0;filter:blur(90px);opacity:.5}
+.aurora i{position:absolute;width:48vmax;height:48vmax;border-radius:50%;animation:dr 22s ease-in-out infinite alternate}
+.aurora i:nth-child(1){background:var(--teal);left:-12vmax;top:-14vmax;opacity:.38}
+.aurora i:nth-child(2){background:var(--pink);right:-16vmax;top:12vh;opacity:.28;animation-delay:-7s}
+.aurora i:nth-child(3){background:var(--lime);left:28vw;bottom:-26vmax;opacity:.2;animation-delay:-13s}
+@keyframes dr{to{transform:translate(6vmax,4vmax) scale(1.15)}}
+.rings{position:fixed;left:50%;top:50%;width:150vmin;height:150vmin;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(255,255,255,.05);box-shadow:0 0 0 12vmin rgba(255,255,255,.012),inset 0 0 0 12vmin rgba(255,255,255,.012);animation:sp 120s linear infinite}
+@keyframes sp{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.vig{position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.7));pointer-events:none}
+.ch{position:fixed;z-index:30;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+.brand{left:28px;top:calc(22px + env(safe-area-inset-top,0px));display:flex;gap:10px;align-items:center;color:var(--tx);font-weight:700;letter-spacing:.3em}
+.rec{right:28px;top:calc(22px + env(safe-area-inset-top,0px))}.rec b{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--pink);margin-right:8px;animation:bl 1.4s infinite}
+@keyframes bl{50%{opacity:.15}}
+.cr{position:fixed;width:26px;height:26px;border:2px solid rgba(255,255,255,.35);z-index:30}
+.cr.a{left:14px;top:calc(14px + env(safe-area-inset-top,0px));border-right:0;border-bottom:0}.cr.b{right:14px;top:calc(14px + env(safe-area-inset-top,0px));border-left:0;border-bottom:0}
+.cr.c{left:14px;bottom:14px;border-right:0;border-top:0}.cr.d{right:14px;bottom:14px;border-left:0;border-top:0}
+.exp{left:28px;bottom:26px}.exp span{color:var(--teal)}
+#stage{position:fixed;inset:0;display:grid;place-items:center;padding:64px 20px 78px}
+.s{position:absolute;width:min(1080px,94vw);max-height:calc(100% - 20px);overflow:auto;padding:clamp(18px,3.2vw,38px);background:var(--glass);border:1px solid var(--bd);border-radius:22px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 30px 90px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.08);visibility:hidden;scrollbar-width:none}
+.s.on{visibility:visible}
+.s.on>*{animation:up .7s cubic-bezier(.2,.8,.2,1) both}
+.s.on>*:nth-child(2){animation-delay:.08s}.s.on>*:nth-child(3){animation-delay:.16s}.s.on>*:nth-child(4){animation-delay:.24s}.s.on>*:nth-child(5){animation-delay:.32s}.s.on>*:nth-child(6){animation-delay:.4s}
+@keyframes up{from{opacity:0;transform:translateY(16px) scale(1.05);filter:blur(12px)}}
+.eb{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;font-family:'JetBrains Mono',monospace}
+h2{font-size:clamp(26px,4vw,44px);line-height:1.08;margin-bottom:14px;letter-spacing:-.01em}
+h2 em{font-style:normal;background:linear-gradient(90deg,var(--teal),var(--lime),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+p,li{color:var(--mu);font-size:clamp(14px,1.45vw,17px);line-height:1.55}
+p b,li b{color:var(--tx);font-weight:500}
+.g{display:grid;gap:14px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:760px){.g2,.g3,.g4{grid-template-columns:1fr}.rec{display:none}}
+.card{background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:14px;padding:14px 16px}
+.card h3{font-size:15px;margin-bottom:4px}.card small{color:var(--dim);font-size:12px}
+.st{font-size:clamp(28px,4vw,44px);font-weight:700;line-height:1}.st+span{display:block;margin-top:6px;font-size:12px;color:var(--mu)}
+.t{color:var(--teal)}.p{color:var(--pink)}.l{color:var(--lime)}
+.hero{text-align:center}
+.hero h1{font-size:clamp(70px,13vw,150px);letter-spacing:.14em;line-height:1;font-weight:700;margin:2px 0 6px;padding-left:.14em;background:linear-gradient(100deg,#fff 30%,var(--teal) 55%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{font-size:clamp(14px,1.9vw,21px);color:var(--tx);max-width:760px;margin:0 auto 18px;line-height:1.4}
+.team{margin:16px 0;text-align:left}.team .card{padding:9px 12px}.team h3{font-size:13px}
+.ph{color:var(--lime);border-bottom:1px dashed var(--lime)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;font-size:13px;color:var(--mu);margin-top:6px}.meta b{color:var(--tx);font-weight:500}
+.logos{display:flex;gap:14px;justify-content:center;margin-bottom:12px}.logos div img{width:70px;height:70px;border:1.5px dashed var(--dim);border-radius:50%;display:grid;place-items:center;font-size:9px;color:var(--dim);text-align:center;line-height:1.1}
+ul{list-style:none;padding:0;display:grid;gap:10px}
+li{position:relative;padding-left:22px}li:before{content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;border-radius:50%;border:2px solid var(--teal)}
+.num{display:flex;gap:12px;align-items:flex-start}.num i{font-style:normal;font-family:'JetBrains Mono',monospace;color:var(--pink);font-size:13px;padding-top:2px}.num p{font-size:14px}
+.main{border-left:3px solid var(--teal);padding:4px 0 4px 16px;margin-bottom:16px}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:14px 0}
+.nd{flex:1 1 105px;background:rgba(255,255,255,.05);border:1px solid var(--bd);border-radius:12px;padding:10px;text-align:center;position:relative;font-size:12px;color:var(--mu)}
+.nd b{display:block;color:var(--tx);font-size:13px;margin-bottom:2px}
+.nd:not(:last-child):after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--teal);font-size:14px;z-index:2}
+.nd.cl{border-color:var(--teal)}.nd.ac{border-color:var(--pink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{font-size:12px;padding:5px 11px;border-radius:99px;border:1px solid var(--bd);background:rgba(255,255,255,.04);color:var(--tx)}
+.ref{display:grid;gap:12px}.ref .card{display:flex;gap:14px}.ref i{font-style:normal;color:var(--teal);font-family:'JetBrains Mono',monospace}.ref p{font-size:14px}
+#iris{position:fixed;inset:0;width:100%;height:100%;z-index:20;pointer-events:none}
+#pup{position:fixed;left:50%;top:50%;width:200px;height:200px;margin:-100px 0 0 -100px;z-index:21;opacity:1;pointer-events:none}
+#fl{position:fixed;inset:0;background:#fff;opacity:0;z-index:22;pointer-events:none}
+#nav{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:30;display:flex;gap:12px;align-items:center}
+#nav button{width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--glass);color:var(--tx);font-size:16px;cursor:pointer;backdrop-filter:blur(10px)}
+#nav button:hover{border-color:var(--teal)}
+.dots{display:flex;gap:8px}.dots span{width:22px;height:5px;border-radius:3px;background:rgba(255,255,255,.18);cursor:pointer;transition:.3s}.dots span.on{background:var(--teal);width:36px}
+@media(max-width:760px){.exp{display:none}}
+@media(prefers-reduced-motion:reduce){.aurora i,.rings{animation:none}}
+.s{transition:filter .45s,transform .45s}.s.out{filter:blur(10px);transform:scale(.95)}.s.on{animation:zin 1s cubic-bezier(.2,.8,.2,1) both}@keyframes zin{from{filter:blur(16px);transform:scale(1.08)}}
+.src{display:block;margin-top:10px;font-size:11px;color:var(--dim)}
+.code{background:rgba(0,0,0,.35);border:1px solid var(--bd);border-radius:12px;padding:16px;display:grid;gap:9px}.ln{display:block;height:8px;border-radius:4px;background:rgba(255,255,255,.35)}.ln.rel{background:var(--teal)}
+.s.on .ln:not(.rel){animation:dm 1.2s 1.8s forwards}.s.on .ln.rel{animation:gl 1.2s 1.8s forwards}@keyframes dm{to{opacity:.1;filter:blur(2px)}}@keyframes gl{to{box-shadow:0 0 14px var(--teal);transform:scaleY(1.6)}}
+.bar{height:28px;border-radius:8px;background:linear-gradient(90deg,var(--teal),var(--lime));display:flex;align-items:center;padding-left:12px;font-weight:700;color:#06070b;font-size:13px;width:0}.s.on .bar{animation:gw 1.4s .5s cubic-bezier(.2,.8,.2,1) forwards}@keyframes gw{to{width:var(--w)}}
+.s.on .flow .nd{animation:lt .9s both}.flow .nd:nth-child(1){animation-delay:.3s!important}.flow .nd:nth-child(2){animation-delay:.6s!important}.flow .nd:nth-child(3){animation-delay:.9s!important}.flow .nd:nth-child(4){animation-delay:1.2s!important}.flow .nd:nth-child(5){animation-delay:1.5s!important}
+@keyframes lt{from{opacity:0;transform:scale(.8)}50%{box-shadow:0 0 18px var(--teal)}}
+#af{position:fixed;left:50%;top:50%;width:150px;height:150px;margin:-75px;z-index:23;pointer-events:none;opacity:0;background:linear-gradient(#b5d334,#b5d334) 0 0/30px 3px,linear-gradient(#b5d334,#b5d334) 0 0/3px 30px,linear-gradient(#b5d334,#b5d334) 100% 0/30px 3px,linear-gradient(#b5d334,#b5d334) 100% 0/3px 30px,linear-gradient(#b5d334,#b5d334) 0 100%/30px 3px,linear-gradient(#b5d334,#b5d334) 0 100%/3px 30px,linear-gradient(#b5d334,#b5d334) 100% 100%/30px 3px,linear-gradient(#b5d334,#b5d334) 100% 100%/3px 30px;background-repeat:no-repeat}
+@keyframes af{0%{opacity:0;transform:scale(2.4)}35%{opacity:1;transform:scale(1)}80%{opacity:1}100%{opacity:0}}#af.go{animation:af .9s ease both}
+</style></head>
+<body>
+<div class="aurora"><i></i><i></i><i></i></div><div class="rings"></div><div class="vig"></div>
+<div class="ch brand"><svg width="22" height="22" viewBox="-12 -12 24 24"><circle r="10" fill="none" stroke="#22c0b4" stroke-width="2"/><circle r="4.5" fill="#ee2a7b"/></svg>LENS</div>
+<div class="ch rec"><b></b>Proposal Defense · 2026–27</div>
+<div class="cr a"></div><div class="cr b"></div><div class="cr c"></div><div class="cr d"></div>
+<div class="ch exp mono"><span id="fs">f/1.4</span> · 1/125 · ISO 100 · FRAME <span id="fn">01</span>/11</div>
+
+<div id="stage">
+<!-- 1 TITLE -->
+<section class="s hero on" data-f="f/1.4">
+ <div class="logos"><div><img src="university-logo.png" alt=""></div><div><img src="faculty-logo.png" alt=""></div></div>
+ <div class="eb">Graduation Project Proposal · 2026–2027</div>
+ <h1>LENS</h1>
+ <p class="sub">A Task-Aware, Token-Efficient Context Tool for AI Coding Agents</p>
+ <div class="g g4 team">
+  <div class="card"><h3>Esraa Ahmed Abo-Elaas</h3><small>Team Leader · <span class="ph">ID: 2603073</span></small></div>
+  <div class="card"><h3>Aya Saad Rizk</h3><small><span class="ph">ID: 2603009</span></small></div>
+  <div class="card"><h3>Amr Mohamed Abdelrahman</h3><small><span class="ph">ID: 2603037</span></small></div>
+  <div class="card"><h3>Abdallah Elwasify Mohamed</h3><small><span class="ph">ID: 2603026</span></small></div>
+  <div class="card"><h3>Abdallah Mohamed Ramdan</h3><small><span class="ph">ID: 2603031</span></small></div>
+  <div class="card"><h3>Lama Hany Shaker</h3><small><span class="ph">ID: </span></small></div>
+  <div class="card"><h3>Ahmed Mohamed Ahmed Yousry</h3><small><span class="ph">ID</span></small></div>
+  <div class="card"><h3>Supervisor</h3><small>Prof. <span class="ph">Dr. Gaber</span></small></div>
+ </div>
+ <div class="meta"><span><b>Department:</b> Computer Science</span><span><b>Faculty:</b> <span class="ph">Computers and Information</span> · <span class="ph">Arish University</span></span><span><b>Date:</b> October 2026</span></div>
+</section><section class="s" data-f="f/1.8"><div class="eb">Question 1</div><h2>How much energy does <em>one AI answer</em> use?</h2>
+<div class="g g3"><div class="card"><div class="st t"><span class="cnt" data-to="0.24" data-dec="2">0</span> Wh</div><span>median Gemini text prompt</span></div><div class="card"><div class="st p"><span class="cnt" data-to="0.03" data-dec="2">0</span> g</div><span>CO₂e emitted</span></div><div class="card"><div class="st l"><span class="cnt" data-to="0.26" data-dec="2">0</span> mL</div><span>of water, about five drops</span></div></div>
+<p style="margin-top:14px">About nine seconds of TV. Tiny, until you remember a coding agent makes many calls per task, and very long inputs use more than the median prompt.</p><span class="src">Google, Aug 2025 (median Gemini Apps text prompt). OpenAI's CEO cited 0.34 Wh for an average ChatGPT prompt.</span></section><section class="s" data-f="f/2.0"><div class="eb">Question 2</div><h2>What did the agent <em>actually need?</em></h2><div class="g g2"><div class="code"><i class="ln" style="width:70%"></i><i class="ln" style="width:92%"></i><i class="ln" style="width:55%"></i><i class="ln" style="width:80%"></i><i class="ln rel" style="width:60%"></i><i class="ln rel" style="width:88%"></i><i class="ln" style="width:45%"></i><i class="ln" style="width:76%"></i><i class="ln" style="width:64%"></i><i class="ln" style="width:52%"></i></div><div><ul><li>The task: <b>"change token expiry"</b>.</li><li>The agent still reads the whole file: comments, blank lines, unrelated functions.</li><li>Watch the lens focus on the one function that matters.</li></ul><div class="st t" style="margin-top:18px">8 sent, 1 needed</div><span class="src">Illustrative file</span></div></div></section><section class="s" data-f="f/2.8"><div class="eb">The problem · Question 3</div><h2>Agents read <em>far more</em> than they need</h2><div class="g g3"><div class="card"><h3 class="p">Over-reading</h3><small>Whole files for one function</small></div><div class="card"><h3 class="p">Re-reading</h3><small>Same file, paid for again and again</small></div><div class="card"><h3 class="p">Bloated history</h3><small>Old turns, logs and traces resent every call</small></div></div><div class="g g2" style="margin-top:14px"><div class="card"><h3 class="t">Does shorter context mean worse answers?</h3><small>Models can lose facts buried in the middle of long contexts (Liu et al., 2024).</small></div><div class="card"><h3 class="t">The gap</h3><small>Existing tools claim 60–90% savings from tracking estimates, with no published controlled quality study (LeanCTX).</small></div></div></section><section class="s" data-f="f/4.0"><div class="eb">The idea</div><h2>Meet <em>Lens</em>: it focuses the agent on what matters</h2><div class="main"><p><b>Goal:</b> cut tokens and API cost for AI coding agents, report the energy and CO₂ that follows, and prove what compression does to answer quality.</p></div><div class="chips"><span>Python · JavaScript · TypeScript</span><span>Installs with one command</span><span>Runs on your machine</span><span>Works through MCP</span><span>Cost first, energy second</span></div></section><section class="s" data-f="f/5.6"><div class="eb">How it works</div><h2>The agent asks. <em>Lens focuses.</em></h2><p><b>On your machine</b></p><div class="flow"><div class="nd"><b>Coding Agent</b>Claude Code</div><div class="nd cl"><b>Task & Context</b>what is needed?</div><div class="nd cl"><b>AST Compressor</b>signatures + bodies</div><div class="nd cl"><b>Cache + Diff</b>nothing twice</div><div class="nd cl"><b>Redaction</b>secrets masked</div></div><p><b>In the cloud</b>, statistics only</p><div class="flow"><div class="nd"><b>Stats API</b>tokens, cost</div><div class="nd"><b>PostgreSQL</b>history</div><div class="nd ac"><b>Dashboard</b>per project and session</div></div><p style="font-size:13px">Source code and prompt text never leave your machine.</p></section><section class="s" data-f="f/8"><div class="eb">Features</div><h2>One layer, <em>eight tools</em></h2><div class="g g4"><div class="card"><small class="mono t">01</small><h3>Task-aware selection</h3><small>Reads the task, hands over only the relevant code</small></div><div class="card"><small class="mono t">02</small><h3>AST compression</h3><small>Keeps signatures, expand_symbol fetches bodies on demand</small></div><div class="card"><small class="mono t">03</small><h3>Cache + diff</h3><small>Never resends a file; sends only what changed</small></div><div class="card"><small class="mono t">04</small><h3>History & tool output</h3><small>Summarizes old turns, shrinks logs and traces</small></div><div class="card"><small class="mono t">05</small><h3>Secrets redaction</h3><small>Masks keys and passwords before the model sees them</small></div><div class="card"><small class="mono t">06</small><h3>Adaptive budget</h3><small>Pick a token budget; raw-file fallback when risky</small></div><div class="card"><small class="mono t">07</small><h3>Prompt quality score</h3><small>Flags vague requests with a sharper rewrite</small></div><div class="card"><small class="mono t">08</small><h3>Dashboard</h3><small>Cost first, energy second, per project and session</small></div></div></section><section class="s" data-f="f/11"><div class="eb">Example</div><h2>Change token expiry in <em>login.py</em></h2><p>Without Lens</p><div class="bar" style="--w:100%"><span class="cnt" data-to="8400">0</span> tokens</div><p style="margin-top:14px">With Lens</p><div class="bar" style="--w:23%"><span class="cnt" data-to="1900">0</span></div><div class="st l" style="margin-top:18px">−<span class="cnt" data-to="77">0</span>% tokens</div><span class="src">Illustrative numbers. Real results come from our evaluation.</span></section><section class="s" data-f="f/16"><div class="eb">Evaluation · Question 4</div><h2>Does compression <em>hurt</em> the answer?</h2><p>Same agent, same model, same benchmark tasks, four conditions:</p><div class="flow"><div class="nd"><b>1 Raw</b>baseline</div><div class="nd cl"><b>2 AST only</b>compression</div><div class="nd cl"><b>3 + Task layer</b>selection</div><div class="nd ac"><b>4 All features</b>full Lens</div></div><div class="chips"><span>Task success</span><span>Tokens</span><span>Cost</span><span>Latency</span><span>Energy estimate</span><span>How often the agent uses Lens</span></div><p style="margin-top:12px">A good result: big token savings with answer quality unchanged.</p></section><section class="s" data-f="f/22"><div class="eb">Impact</div><h2>Who gains, and <em>what comes next</em></h2><div class="g g2"><div class="card"><h3 class="t">Measuring impact</h3><ul style="margin-top:8px"><li>Cost = tokens saved × published price.</li><li>Energy = tokens saved × published factors, every assumption documented.</li></ul></div><div class="card"><h3 class="p">Who benefits</h3><ul style="margin-top:8px"><li>Developers: lower cost, faster replies.</li><li>Companies: predictable API bills.</li><li>Researchers: transparent estimates.</li></ul></div></div><div class="chips" style="margin-top:14px"><span>Future work:</span><span>VS Code extension or CLI</span><span>Hosted zero-install server</span><span>More languages</span></div></section><section class="s" data-f="f/32"><div class="eb">References</div><h2>Built on <em>solid ground</em></h2><div class="g g2 ref" style="gap:8px"><div class="card"><i>[1]</i><p>Anthropic. Model Context Protocol specification.</p></div><div class="card"><i>[2]</i><p>Liu et al. Lost in the middle. TACL, 2024.</p></div><div class="card"><i>[3]</i><p>Luccioni, Jernite, Strubell. Power hungry processing. FAccT, 2024.</p></div><div class="card"><i>[4]</i><p>Strubell et al. Energy and policy considerations for deep learning in NLP. ACL, 2019.</p></div><div class="card"><i>[5]</i><p>Google. Measuring the environmental impact of AI inference. Aug 2025.</p></div><div class="card"><i>[6]</i><p>GenAI Impact. EcoLogits and EcoLogits Calculator.</p></div><div class="card"><i>[7]</i><p>Brunsfeld et al. Tree-sitter.</p></div><div class="card"><i>[8]</i><p>LeanCTX project documentation.</p></div></div><p class="mono" style="margin-top:16px;color:var(--teal);font-size:13px;text-align:center">Thank you · Questions?</p></section>
+</div>
+
+<svg id="iris" viewBox="-960 -540 1920 1080" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#151a26"/><stop offset="1" stop-color="#07080d"/></linearGradient></defs><g id="bls"></g></svg>
+<svg id="pup" viewBox="-100 -100 200 200"><circle r="92" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2"/><circle r="70" fill="#07080d" stroke="#22c0b4" stroke-width="3"/><circle r="46" fill="#0d1220" stroke="#ee2a7b" stroke-width="2"/><circle cx="-16" cy="-18" r="9" fill="#fff"/><circle cx="14" cy="12" r="4" fill="#b5d334"/></svg>
+<div id="fl"></div><div id="af"></div>
+
+<div id="nav"><button id="pv" aria-label="Previous">←</button><div class="dots" id="dots"></div><button id="nx" aria-label="Next">→</button></div>
+
+<script>
+const S=[...document.querySelectorAll('.s')],NS='http://www.w3.org/2000/svg',cols=['#22c0b4','#ee2a7b','#b5d334'];
+const g=document.getElementById('bls'),pup=document.getElementById('pup'),fl=document.getElementById('fl'),dots=document.getElementById('dots');
+const bl=[0,1,2,3,4,5].map(k=>{const r=document.createElementNS(NS,'rect');r.setAttribute('x',-3200);r.setAttribute('y',-6400);r.setAttribute('width',6400);r.setAttribute('height',6400);r.setAttribute('fill','url(#bg)');r.setAttribute('stroke',cols[k%3]);r.setAttribute('stroke-width',3);r.setAttribute('stroke-opacity',.75);g.appendChild(r);return r});
+S.forEach((_,k)=>{const d=document.createElement('span');d.onclick=()=>go(k);dots.appendChild(d)});
+let i=0,r=-20,busy=false;
+function set(v){r=v;bl.forEach((b,k)=>b.setAttribute('transform','rotate('+(k*60+(1250-v)*.035)+') translate(0,'+(-v)+')'));pup.style.opacity=Math.max(0,Math.min(1,1-(v+20)/300));pup.style.transform='rotate('+(v*.15)+'deg) scale('+(1+v/2600)+')'}
+function tw(to,ms){return new Promise(res=>{const a=r,t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/ms),e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;set(a+(to-a)*e);p<1?requestAnimationFrame(f):res()})(t0)})}
+function hud(){document.getElementById('fs').textContent=S[i].dataset.f;document.getElementById('fn').textContent=String(i+1).padStart(2,'0');[...dots.children].forEach((d,k)=>d.classList.toggle('on',k==i))}
+const af=document.getElementById('af');
+function runCounts(sl){sl.querySelectorAll('.cnt').forEach(e=>{const to=+e.dataset.to,dc=+(e.dataset.dec||0),t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/1500),v=to*(1-Math.pow(1-p,3));e.textContent=v.toFixed(dc).replace(/\B(?=(\d{3})+(?!\d))/g,',');if(p<1)requestAnimationFrame(f)})(t0)})}
+async function go(n){if(busy||n<0||n>=S.length||n==i)return;busy=true;S[i].classList.add('out');await tw(-20,480);fl.animate([{opacity:.55},{opacity:0}],{duration:260});S[i].classList.remove('on','out');i=n;S[i].scrollTop=0;S[i].classList.add('on');hud();af.classList.remove('go');void af.offsetWidth;af.classList.add('go');await new Promise(x=>setTimeout(x,420));setTimeout(()=>runCounts(S[i]),500);await tw(1250,900);busy=false}
+document.getElementById('pv').onclick=()=>go(i-1);document.getElementById('nx').onclick=()=>go(i+1);
+addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(i+1)}if(['ArrowLeft','PageUp'].includes(e.key))go(i-1)});
+let x0=null;addEventListener('touchstart',e=>x0=e.touches[0].clientX);addEventListener('touchend',e=>{if(x0==null)return;const d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>60)go(i+(d<0?1:-1));x0=null});
+S.forEach((s,k)=>{if(k)s.classList.remove('on')});S[0].classList.remove('on');
+set(-20);hud();
+setTimeout(async()=>{busy=true;S[0].classList.add('on');await tw(1250,1500);busy=false},700);
+</script>
+</body></html>
